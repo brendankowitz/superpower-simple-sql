@@ -12,7 +12,7 @@ namespace FhirQL.Tests
             var tokenizer = new SqlTokenizer();
             var tokens = tokenizer.Tokenize("select gender, birthDate from Patient");
 
-            var result = SqlParser.SelectClause.Parse(tokens);
+            var result = SqlParser.Statement.Parse(tokens);
 
             var sql = FhirSqlFormatter.ToSql(result);
 
@@ -26,7 +26,7 @@ namespace FhirQL.Tests
             var tokenizer = new SqlTokenizer();
             var tokens = tokenizer.Tokenize("select name[0].family, name[0].given[0], gender, birthDate from Patient");
 
-            var result = SqlParser.SelectClause.Parse(tokens);
+            var result = SqlParser.Statement.Parse(tokens);
 
             var sql = FhirSqlFormatter.ToSql(result);
 
